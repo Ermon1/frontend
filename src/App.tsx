@@ -9,19 +9,26 @@ import "./styles/global.scss";
 import User from "./pages/user/User";
 import Product from "./pages/product/Product";
 
-import './index.css'
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import SubjectList from "./pages/SubjectList";
+import "./index.css";
+import "./App.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Subjects, { SingleSubject } from "./pages/subject/Subjects";
 import Category from "./pages/category/Category";
 import SingleExam from "./pages/exams/SingleExam";
 import Exams from "./pages/exams/Exams";
 import SingleCategory from "./pages/category/SingleCategory";
-
+import ExamComponent from "./pages/ExamComponent";
+import Exampage from "./pages/Exampage";
+import Model from "./pages/Model";
+import ModelComponent from "./pages/ModelComponent";
+import ModelPage from "./pages/ModelPage";
 const queryClient = new QueryClient();
-
+import ModelSubjectList from "./pages/ModelSubjectList";
+import AiSubjectList from "./pages/AisubjectList";
+import AiPage from "./pages/AiPage";
+import SignUp from "./pages/SIgnUp";
+import Profile from "./pages/Profile";
 function App() {
   const Layout = () => {
     return (
@@ -45,34 +52,38 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      element: <Home />,
+    },
+    {
+      path: "start/",
       element: <Layout />,
       children: [
         {
-          path: "/",
-          element: <Home />,
-        },
-        {
-          path: "/users",
+          path: "users",
           element: <Users />,
         },
         {
-          path: "/exams",
+          path: "profile",
+          element: <Profile />,
+        },
+        {
+          path: "exams",
           element: <Exams />,
         },
         {
-          path: "/exams/:id",
+          path: "exams/:id",
           element: <SingleExam />,
         },
         {
-          path: "/users/:id",
+          path: "users/:id",
           element: <User />,
         },
         {
-          path: "/products/:id",
+          path: "products/:id",
           element: <Product />,
         },
         {
-          path: "/subjects",
+          path: "subjects",
           element: <Subjects />,
         },
         {
@@ -80,19 +91,60 @@ function App() {
           element: <SingleSubject />,
         },
         {
-          path: "/category",
+          path: "category",
           element: <Category />,
         },
         {
-          path: "/examCategory/:id",
+          path: "examCategory/:id",
           element: <SingleCategory />,
         },
-        
+
+        {
+          path: "exam/model",
+          element: <Model />,
+        },
+        {
+          path: "exam/entrance/subjectlist",
+          element: <SubjectList />,
+        },
+        {
+          path: "exam/model/subjectlist",
+          element: <ModelSubjectList />,
+        },
+        {
+          path: "exam/:subject",
+          element: <ExamComponent />,
+        },
+        {
+          path: "exam/model/:subject",
+          element: <ModelComponent />,
+        },
+        {
+          path: "exam/:subject/:year",
+          element: <Exampage />,
+        },
+        {
+          path: "exam/model/:subject/:year",
+          element: <ModelPage />,
+        },
+        {
+          path: "exam/ai",
+          element: <AiSubjectList />,
+        },
+        {
+          path: "exam/ai/:subject",
+          element: <AiPage />,
+        },
       ],
     },
+
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
     },
   ]);
 

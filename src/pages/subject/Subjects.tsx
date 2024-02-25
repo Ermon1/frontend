@@ -6,6 +6,7 @@ import { getSubject, getSubjectById } from "../../api/APIService";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "../../components/loading/Loading";
 import { useParams } from "react-router-dom";
+import SubjectList from "../SubjectList";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 10 },
@@ -33,7 +34,7 @@ const columns: GridColDef[] = [
 ];
 
 function Subjects() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [subject, setSubject] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,7 +47,9 @@ function Subjects() {
       setSubject(res);
       setLoading(false);
     });
-    setTimeout(()=>{setLoading(false)},5000)
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
   }, []);
 
   const box = useSelector((state) => state.box.isOpen);
@@ -63,38 +66,33 @@ function Subjects() {
         </button>
       </div>
 
-      {/* <DataTable slug="products" columns={columns} rows={subject} /> */}
-      {/* TEST THE API */}
-
       {loading ? (
         <Loading />
-      ) : ( subject.length != 0 ?
-        <DataTable slug="subject" columns={columns} rows={subject} />:(
-          <>Error</>
-        )
+      ) : subject.length != 0 ? (
+        <DataTable slug="subject" columns={columns} rows={subject} />
+      ) : (
+        <>Error</>
       )}
 
-      {open && (
-        <Add slug="subject"  columns={columns} setOpen={setOpen} />
-      )}
+      {open && <Add slug="subject" columns={columns} setOpen={setOpen} />}
     </div>
   );
 }
 
-export const SingleSubject = ()=>{
-  const {id} = useParams()
- 
-  const [singleSubject,setSingleSubject] = useState()
-  useEffect(()=>{
-    getSubjectById(id).then((res)=>{
-      setSingleSubject(res)
-    })
-  })
-  return <div>
+export const SingleSubject = () => {
+  const { id } = useParams();
+
+  const [singleSubject, setSingleSubject] = useState();
+  useEffect(() => {
+    getSubjectById(id).then((res) => {
+      setSingleSubject(res);
+    });
+  });
+  return (
     <div>
-     { singleSubject}
+      <div>{singleSubject}</div>
     </div>
-  </div>
-}
+  );
+};
 
 export default Subjects;

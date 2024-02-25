@@ -1,50 +1,25 @@
-import BarChartBox from "../../components/barChartBox/BarChartBox";
-import BigChartBox from "../../components/bigChartBox/BigChartBox";
-import ChartBox from "../../components/chartBox/ChartBox";
-import PieChartBox from "../../components/pieCartBox/PieChartBox";
-import TopBox from "../../components/topBox/TopBox";
-import {
-  barChartBoxRevenue,
-  barChartBoxVisit,
-  chartBoxConversion,
-  chartBoxProduct,
-  chartBoxRevenue,
-  chartBoxUser,
-} from "../../data";
-import "./home.scss";
-
-const Home = () => {
+import React from "react";
+import Home from "../../components/Home";
+import HeroPage from "../../components/HeroPage";
+import AboutPage from "../../components/AboutPage";
+import BlogPage from "../../components/BlogPage";
+import TestimonialPage from "../../components/TestimonialPage";
+import ContactPage from "../../components/ContactPage";
+import Footer from "../../components/Footer";
+import "../../App.css";
+const HomePage: React.FC = () => {
   return (
-    <div className="gap-3 grid grid-cols-1 sm:mr-3  xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-1 ">
-      <div className="p-5 rounded border 1 row-span-2">
-        <TopBox />
-      </div>
-      <div className="p-5 rounded border 2  ">
-        <ChartBox {...chartBoxUser} />
-      </div>
-      <div className="p-5 rounded border 3 ">
-        <ChartBox {...chartBoxProduct} />
-      </div>
-      <div className="p-5 rounded border  4">
-        <PieChartBox />
-      </div>
-      <div className="p-5 rounded border 5">
-        <ChartBox {...chartBoxConversion} />
-      </div>
-      <div className="p-5 rounded border 6">
-        <ChartBox {...chartBoxRevenue} />
-      </div>
-      <div className=" p-5 rounded border 7">
-        <BigChartBox />
-      </div>
-      <div className="border p-5 rounded 8">
-        <BarChartBox {...barChartBoxVisit} />
-      </div>
-      <div className="border p-5 rounded 9">
-        <BarChartBox {...barChartBoxRevenue} />
-      </div>
+    <>
+    <div className="App">
+      <Home />
+      <AboutPage />
+      <TestimonialPage />
+      <ContactPage />
+     
     </div>
+     <Footer />
+    </>
   );
 };
 
-export default Home;
+export default HomePage;
