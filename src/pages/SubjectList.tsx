@@ -19,7 +19,7 @@ const subjects = [
   },
   {
     id: 3,
-    title: "MATHS",
+    title: "MATHEMATICS",
     description: null,
     chapters: [],
     image_url: null,
@@ -72,7 +72,7 @@ const SubjectList: React.FC = () => {
             subject={subject}
             key={index}
             index={index}
-            handleLinkClick= {handleLinkClick}
+            handleLinkClick={handleLinkClick}
           />
         ))}
       </div>

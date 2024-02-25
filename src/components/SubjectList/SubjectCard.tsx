@@ -19,6 +19,7 @@ const SubjectCard: React.FC<SubjectCardProps> = ({
   index,
   handleLinkClick,
 }) => {
+  console.log(subject.title + "where is the subject");
   return (
     <div
       key={subject.id}

@@ -1,12 +1,27 @@
 // components/QuestionPage.tsx
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "katex/dist/katex.min.css";
+import MathQuill from "mathquill";
+import { InlineMath } from "react-katex";
+import "katex/dist/katex.min.css";
+
 interface TestProps {
   data: Exam[];
 }
 
 const Test: React.FC<TestProps> = ({ data }) => {
   console.log(data);
+
+  const calculateScore = () => {
+    let score = 0;
+    for (let i = 0; i < data.length; i++) {
+      if (selectedAnswers[i] === data[i].correctAnswer) {
+        score++;
+      }
+    }
+    return score;
+  };
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [selectedAnswers, setSelectedAnswers] = useState<
     Record<number, string>
@@ -160,10 +175,8 @@ const Test: React.FC<TestProps> = ({ data }) => {
                 >
                   Next
                 </button>
-            
               </div>
               <div>
-               
                 {(Object.keys(selectedAnswers).length === data.length ||
                   totalTime === 0) && (
                   <button
@@ -215,4 +228,3 @@ const Test: React.FC<TestProps> = ({ data }) => {
   );
 };
 export default Test;
-1;

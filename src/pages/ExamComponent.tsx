@@ -58,7 +58,7 @@ const examData = [
     },
     subject: {
       id: 3,
-      title: "MATHS",
+      title: "MATHEMATICS",
       description: null,
       chapters: [],
       image_url: null,
@@ -273,7 +273,6 @@ const ExamComponent: React.FC = () => {
   const handleLinkClick = (category: string, year: number) => {
     console.log("model" + model);
     navigate(`/start/exam/${category.toLowerCase()}/${year}`);
-   
   };
 
   useEffect(() => {
